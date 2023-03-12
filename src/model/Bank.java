@@ -74,6 +74,10 @@ public class Bank {
         }
 
         BankAccount account = findBy(accountNumber);
+        if (account == null){
+            System.out.println("Account does not exists: ");
+            return;
+        }
         account.depositing(money);
     }
 
@@ -84,11 +88,20 @@ public class Bank {
         }
 
         BankAccount account = findBy(accountNumber);
+        if (account == null){
+            System.out.println("Account does not exists: ");
+            return;
+        }
         account.withdrawing(money);
     }
 
 
     public double getTotalBalance() {
+        if (accounts == null || accounts.isEmpty()){
+            System.out.println("Bank does not have accounts: ");
+            return -1;
+        }
+
         double sum = 0;
         for (BankAccount item : accounts) {
             sum += item.checkBalance();

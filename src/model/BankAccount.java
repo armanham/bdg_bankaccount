@@ -33,8 +33,8 @@ public class BankAccount {
         }
         if (money > this.balance) {
             System.out.println("You do not have this money on your balance: your balance is: " + this.balance);
+            return -1;
         }
-
         return this.balance - money;
     }
 
